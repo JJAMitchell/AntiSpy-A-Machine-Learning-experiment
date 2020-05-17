@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*Code inspired by Dr Penny dy Byl's Artifical Neural Network from:
+https://www.udemy.com/course/machine-learning-with-unity/learn/lecture/13882694#overview
+*/
 public class Neuron {
 
 	public int numInputs;
