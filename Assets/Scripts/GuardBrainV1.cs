@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/*
+ * Created by Jordan Mitchell for CI301
+ */
+
 [RequireComponent(typeof(NavMeshAgent))]
 public class GuardBrainV1 : MonoBehaviour
 {

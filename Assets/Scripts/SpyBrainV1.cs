@@ -1,13 +1,13 @@
-﻿/*
- * Created by Jordan Mitchell for CI
- */
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
 using System.IO;
+
+/*
+ * Created by Jordan Mitchell for CI301
+ */
 
 [RequireComponent(typeof(NavMeshAgent))]
 
