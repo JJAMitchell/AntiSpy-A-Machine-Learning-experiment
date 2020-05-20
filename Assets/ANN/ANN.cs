@@ -15,6 +15,7 @@ public class ANN{
 	public double alpha;
 	List<Layer> layers = new List<Layer>();
 
+	//Public function to set up the ANN with number of inputs, outputs, hidden layers and Nuerons per hidden
 	public ANN(int nI, int nO, int nH, int nPH, double a)
 	{
 		numInputs = nI;
@@ -23,6 +24,8 @@ public class ANN{
 		numNPerHidden = nPH;
 		alpha = a;
 
+		//If the number of hidden layers are more then zero, sets up each hidden layer with the specified number of Nuerons
+		//Else just have the input layer and output layer.
 		if(numHidden > 0)
 		{
 			layers.Add(new Layer(numNPerHidden, numInputs));
@@ -40,6 +43,7 @@ public class ANN{
 		}
 	}
 
+	//Training function that gets the value from calcOutput and uses the returned value to update the weights.
 	public List<double> Train(List<double> inputValues, List<double> desiredOutput)
 	{
 		List<double> outputValues = new List<double>();
@@ -48,6 +52,7 @@ public class ANN{
 		return outputValues;
 	}
 
+	//Calcout function handles the calculations from the input values and the desiered output
 	public List<double> CalcOutput(List<double> inputValues, List<double> desiredOutput)
 	{
 		List<double> inputs = new List<double>();
@@ -95,6 +100,7 @@ public class ANN{
 		return outputValues;
 	}
 
+	//Same as the first calcoutput however this calculation uses just the input values.
 	public List<double> CalcOutput(List<double> inputValues)
 	{
 		List<double> inputs = new List<double>();
@@ -143,6 +149,7 @@ public class ANN{
 	}
 
 
+	//Prints all current weights into a string.
 	public string PrintWeights()
 	{
 		string weightStr = "";
@@ -160,6 +167,7 @@ public class ANN{
 		return weightStr;
 	}
 
+	//Takes a string, if the layout is correct then it will load in each value as a weight.
 	public void LoadWeights(string weightStr)
 	{
 		if(weightStr == "") return;
@@ -179,7 +187,8 @@ public class ANN{
 			}
 		}
 	}
-	
+
+	// Private function that updates the weights of each nueron based on what the calc output returned as.
 	void UpdateWeights(List<double> outputs, List<double> desiredOutput)
 	{
 		double error;
@@ -222,39 +231,46 @@ public class ANN{
 	}
 
 
+	//The activation function for the hidden layers
 	double ActivationFunction(double value)
 	{
 		return TanH(value);
 	}
 
+	//Activation function for the output layer
 	double ActivationFunctionO(double value)
 	{
 		return Sigmoid(value);
 	}
 
+	//Between -1 and 1
 	double TanH(double value)
 	{
 		double k = (double) System.Math.Exp(-2*value);
     	return 2 / (1.0f + k) - 1;
 	}
 
+	//Above 0, else return 0
 	double ReLu(double value)
 	{
 		if(value > 0) return value;
 		else return 0;
 	}
 
+	//Returns the exact value
 	double Linear(double value)
 	{
 		return value;
 	}
 
+	//If value is below 0, add a slight gradient, else return value
 	double LeakyReLu(double value)
 	{
 		if(value < 0) return 0.01*value;
    		else return value;
 	}
 
+	//Between 0 and 1
 	double Sigmoid(double value) 
 	{
     	double k = (double) System.Math.Exp(value);

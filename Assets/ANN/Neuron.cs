@@ -17,6 +17,7 @@ public class Neuron {
 
 	public Neuron(int nInputs)
 	{
+		//Adds a weight value to each Nueron which can be changed in the ANN
 		float weightRange = (float) 2.4/(float) nInputs;
 		bias = UnityEngine.Random.Range(-weightRange,weightRange);
 		numInputs = nInputs;

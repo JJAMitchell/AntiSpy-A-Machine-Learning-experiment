@@ -634,11 +634,11 @@ MonoBehaviour:
   rightEye: {fileID: 2128444832}
   leftEye: {fileID: 1765507618}
   visableDistance: 10
-  load: 0
-  save: 0
+  load: 1
+  save: 1
   randomValues: 0
   train: 1
-  fast: 0
+  fast: 1
 --- !u!54 &633660162
 Rigidbody:
   m_ObjectHideFlags: 0
